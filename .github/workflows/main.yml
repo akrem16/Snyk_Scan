@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '23'
+          
+      - name: Installer dépendances Python
+        run: pip install -r requirements.txt
 
       - name: Installer Snyk CLI
         run: npm install -g snyk

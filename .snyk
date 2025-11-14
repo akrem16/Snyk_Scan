@@ -1,0 +1,4 @@
+ignore:
+  a2769069-8338-401c-a0eb-de7e36e32b9e:
+    - reason: "Issue comes from pip/distlib inside venv, not project code"
+      expires: "2026-01-01T00:00:00.000Z"

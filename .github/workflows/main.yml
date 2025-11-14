@@ -24,6 +24,6 @@ jobs:
         run: npm install -g snyk
 
       - name: Exécuter l'analyse Snyk
-        run: snyk test --file=requirements.txt --package-manager=pip
+        run: snyk code test -- severity - threshold = low
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

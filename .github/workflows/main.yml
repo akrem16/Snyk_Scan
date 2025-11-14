@@ -12,11 +12,16 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v3
 
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Installer Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '23'
-          
+          node-version: '18'
+
       - name: Installer dépendances Python
         run: pip install -r requirements.txt
 
@@ -24,6 +29,6 @@ jobs:
         run: npm install -g snyk
 
       - name: Exécuter l'analyse Snyk
-        run: snyk code test -- severity - threshold = low
+        run: snyk code test --severity-threshold=low --exclude=venv
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

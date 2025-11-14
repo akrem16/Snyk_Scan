@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Mettre à jour pip, setuptools et wheel
-        run: pip install --upgrade pip setuptools wheel
-
       - name: Installer dépendances Python
         run: pip install -r requirements.txt
 
@@ -32,7 +29,6 @@ jobs:
         run: npm install -g snyk
 
       - name: Exécuter l'analyse Snyk
-        run: snyk code test . --severity-threshold=low
+        run: snyk code test --severity-threshold=low --exclude=venv
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
